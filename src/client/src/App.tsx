@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 const GetRequestButton = () => {
   const handleClick = () => {
-    fetch('/api', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    axios.post('/api/journal', {
+      entry: 'I went to the store today and met a person.',
     })
-    .then((response) => {
-      return response.json()
+    .then(function (response) {
+      console.log(response);
     })
-    .then(data => {
-      console.log(data)
-      // do something with the data
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   return (

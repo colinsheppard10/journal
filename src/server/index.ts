@@ -1,6 +1,7 @@
 
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import router from './routes/routes';
 
 const app = express();
 
@@ -11,18 +12,14 @@ const port = process.env.PORT || 3001;
 // Configure App
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-// Routes
-app.get('/api', (req, res) => {
-  console.log(`got a request`);
-  res.send({response: 'ok'});
-});
+app.use(router)
 
 // start the server
 app.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
 
+export default app;
 /*
   start server: 
     - tsc
