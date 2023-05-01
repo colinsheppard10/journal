@@ -1,8 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
-  organization: "add_env",
-  apiKey: "add_env",
+
 });
 const openai = new OpenAIApi(configuration);
 
@@ -12,7 +11,6 @@ export const submitOpenAiRequest = async (entry: string) => {
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: `Summarize the following journal entry in 5 or less bullet points.: 
-    
     "${entry}"`,
     max_tokens: 2048,
     temperature: 0,

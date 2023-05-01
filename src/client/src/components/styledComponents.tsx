@@ -19,12 +19,15 @@ export const StyledSpinner = styled.div`
   animation: ${rotate} .7s linear infinite;
 `;
 
-export const Button = styled.div`
-  width: 30%;
+export const Button = styled.div<{ width?: string }>`
+  width: ${props => props.width ? props.width : '7em'};
   display: flex;
   color: black;
   font-weight: bold;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+
   padding: 1em;
   background-color: lightblue;
   border-radius: 10px;

@@ -6,9 +6,9 @@ import { TextArea } from './journalInputGPT';
 
 
 
-const JournalInput = () => {
+const JournalInput = ({date, journalEntry = ''}: any) => {
 
-  const [text, setText] = useState('');
+  const [text, setText] = useState(journalEntry);
   const [loading, setLoading] = useState(false);
   const [summary, setSummary] = useState([] as any[]);
 
@@ -36,7 +36,7 @@ const JournalInput = () => {
   }
 
 
-  return <MainContainer>
+  return <>
     <TopRow>
       <SideColumn>
       </SideColumn>
@@ -47,7 +47,7 @@ const JournalInput = () => {
           borderBottom: '0px'
         }}
       >
-        January 1, 2021
+        {date}
       </MiddleColumn>
       <SideColumn>
       </SideColumn>
@@ -55,8 +55,8 @@ const JournalInput = () => {
 
     <BottomRow>
       <SideColumn>
-        <>
         <Button
+          width='30%'
           onClick={handleClick}
         >
           {loading ? <StyledSpinner /> : 'Summarize'}
@@ -67,7 +67,6 @@ const JournalInput = () => {
               {summaryItem}
             </SummaryItem>
           })}
-        </>
         </>
       </SideColumn>
       <MiddleColumn
@@ -87,8 +86,7 @@ const JournalInput = () => {
       <SideColumn>
       </SideColumn>
     </BottomRow>
-  </MainContainer>
-
+  </>
 }
 
 const SummaryItem = styled.div`
@@ -114,9 +112,10 @@ const SideColumn = styled.div`
 `;
 
 const TopRow = styled.div`
+  padding-top: 1em;
   display: flex;
   background-color: #f9fbfd;
-  height: 20vh;
+  height: 10vh;
 `;
 
 const BottomRow = styled.div`
@@ -125,11 +124,6 @@ const BottomRow = styled.div`
   height: 70vh;
 `;
 
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: #f9fbfd;
-  height: 100vh;
-`;
+
 
 export default JournalInput;
