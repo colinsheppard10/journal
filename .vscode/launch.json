@@ -5,6 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "envFile": "${workspaceFolder}/src/server/.env",
       "runtimeExecutable": "/Users/colinsheppard/.nvm/versions/node/v20.0.0/bin/node",
       "name": "Server",
       "type": "node",

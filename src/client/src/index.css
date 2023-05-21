@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  /* Colors - Main */
+  --journal-white: #ffffff;
+  --journal-lightgrey: #f9fbfd;
+  --journal-lightblue: #c1e7ff;
+  --journal-bordergrey: #c7c7c74d;
+  --journal-darkgrey: #a8a8a8;
+  --journal-black: #000000;
+
+
+  --material-primary-main: #3c5a80;
+  --material-secondary-light: #e0fbfb;
+  --material-secondary-main: #97c1d9;
+  --material-secondary-contrast: #ef6c4d;
+
+}
