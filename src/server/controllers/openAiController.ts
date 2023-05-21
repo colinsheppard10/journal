@@ -16,7 +16,7 @@ export const submitOpenAiRequest = async (entry: string) => {
     temperature: 0,
   });
 
-  const responseText = response.data.choices[0].text;
+  const responseText = response?.data?.choices[0]?.text?.replace(/\n/g, '') ?? ""
   // const entryWords = entry.split(" ");
   // const entryLastWord = entryWords[entryWords.length - 1];
   // const responseText = `summary note ${entryLastWord} 1 - summary note ${entryLastWord} 2 - summary note ${entryLastWord} 3 - summary note ${entryLastWord} 4 - summary note ${entryLastWord} 5`;

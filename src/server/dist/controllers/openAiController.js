@@ -18,6 +18,7 @@ const configuration = new openai_1.Configuration({
 const openai = new openai_1.OpenAIApi(configuration);
 const prompt = (_b = process.env.OPEN_AI_PROMPT) !== null && _b !== void 0 ? _b : "x";
 const submitOpenAiRequest = (entry) => __awaiter(void 0, void 0, void 0, function* () {
+    var _c, _d, _e, _f;
     if (!entry || entry.length <= 0)
         return "";
     const fullPrompt = `${prompt}"${entry}"`;
@@ -28,7 +29,7 @@ const submitOpenAiRequest = (entry) => __awaiter(void 0, void 0, void 0, functio
         max_tokens: 2048,
         temperature: 0,
     });
-    const responseText = response.data.choices[0].text;
+    const responseText = (_f = (_e = (_d = (_c = response === null || response === void 0 ? void 0 : response.data) === null || _c === void 0 ? void 0 : _c.choices[0]) === null || _d === void 0 ? void 0 : _d.text) === null || _e === void 0 ? void 0 : _e.replace(/\n/g, '')) !== null && _f !== void 0 ? _f : "";
     // const entryWords = entry.split(" ");
     // const entryLastWord = entryWords[entryWords.length - 1];
     // const responseText = `summary note ${entryLastWord} 1 - summary note ${entryLastWord} 2 - summary note ${entryLastWord} 3 - summary note ${entryLastWord} 4 - summary note ${entryLastWord} 5`;
