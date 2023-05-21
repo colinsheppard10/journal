@@ -90,11 +90,11 @@ const Home = () => {
     getJournalWrapper();
   }, []);
 
-  const shrinkBoarder = window.innerWidth <= 530;
+  const isMobile = window.innerWidth <= 530;
   return (
     <>
       <AppHeader />
-      <MainContainer shrinkBoarder={shrinkBoarder}>
+      <MainContainer shrinkBoarder={isMobile}>
         <HeaderContainer>
           {tabs.map((tab: Tab) => {
             const { text, id } = tab;
@@ -139,14 +139,14 @@ const Home = () => {
   );
 };
 
-export const MainContainer = styled.div<{ shrinkBoarder?: boolean }>`
-  margin: 2% ${(props) => (props.shrinkBoarder ? "5" : "15")}%;
+export const MainContainer = styled.div<{ isMobile?: boolean }>`
+  margin: 2% ${(props) => (props.isMobile ? "5" : "15")}%;
   background-color: var(--journal-lightgrey);
 `;
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<{ isMobile?: boolean }>`
   display: flex;
-  justify-content: flex-end;
+  justify-content: ${(props) => (props.isMobile ? "center" : "flex-end")};
 `;
 
 export default Home;
