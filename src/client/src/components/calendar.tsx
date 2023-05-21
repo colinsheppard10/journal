@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import { Button } from "./styledComponents";
+import { Button, StyledSpinner } from "./styledComponents";
 import { createSummary } from "../api/user";
 import { useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
@@ -66,7 +66,8 @@ const CalendarComponent = ({
   events: CalendarEvent[];
 }) => {
   const [summaries, setSummaries] = useState(initialSummaries);
-
+  const [loading, setLoading] = useState("");
+  
   const afterCreateSummary = (res: any) => {
     let summaryText = res.data?.responseText?.summary;
     let timeFrame = res.data?.responseText?.timeFrame;
@@ -78,6 +79,7 @@ const CalendarComponent = ({
         return summary;
       });
     });
+    setLoading("")
     scroll.scrollToBottom();
   };
 
@@ -117,6 +119,7 @@ const CalendarComponent = ({
               <SummaryContainer key={optionId}>
                 <Button
                   onClick={() => {
+                    setLoading(optionId);
                     createSummary({
                       payload: { timeFrame: optionId },
                       callback: afterCreateSummary,
@@ -126,7 +129,7 @@ const CalendarComponent = ({
                     margin: ".5em",
                   }}
                 >
-                  {display}
+                  {loading === optionId ? <StyledSpinner /> : display}
                 </Button>
                 <Summary noDisplay={noDisplay}>
                   {noDisplay
