@@ -78,9 +78,11 @@ const JournalInput = ({
     setSummary(parseResponseText(response.data?.responseText));
     onSubmitJournal();
     scroll.scrollToBottom();
+    setLoading(false)
   };
 
   const handleClick = () => {
+    setLoading(true)
     createJournal({
       payload: {
         entry: text,

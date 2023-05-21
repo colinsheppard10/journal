@@ -47,7 +47,6 @@ const getToday = (
   let todayJournal = journalEntries.find((journalEntry) => {
     return isSameDay(today, journalEntry.timestamp);
   }) ?? { entry: "", id: undefined, summary: "" };
-  debugger;
   return {
     journalEntry: todayJournal.entry,
     timestamp: today,
@@ -78,6 +77,7 @@ const Home = () => {
       setEvents(getEventsFromJournal(responseText));
       let today = getToday(responseText, Date.now().toString());
       setTodayJournal(today);
+      setActiveJournal(today);
     }
   };
 
