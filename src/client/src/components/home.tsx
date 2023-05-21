@@ -94,8 +94,8 @@ const Home = () => {
   return (
     <>
       <AppHeader />
-      <MainContainer shrinkBoarder={isMobile}>
-        <HeaderContainer>
+      <MainContainer isMobile={isMobile}>
+        <HeaderContainer isMobile={isMobile}>
           {tabs.map((tab: Tab) => {
             const { text, id } = tab;
             return (
