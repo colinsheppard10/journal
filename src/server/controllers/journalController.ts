@@ -67,7 +67,7 @@ const getJournalEntries = async ({ user, timeFrame }: any) => {
 };
 
 export const handleJournalPost = async ({ userId, entry, timestamp, date }) => {
-  const responseText = await submitOpenAiRequest(entry);
+  const responseText = await submitOpenAiRequest({userId, entry});
   await saveJournalEntry({
     userId,
     entry,
@@ -95,7 +95,7 @@ export const handleSummaryPost = async ({ user, timeFrame }) => {
   const journalSummaries = journalEntries.reduce((acc, journal) => {
     return acc + (journal.summary ?? "");
   }, "");
-  const summary = await submitOpenAiRequest(journalSummaries);
+  const summary = await submitOpenAiRequest({userId: user.id, entry: journalSummaries});
   return { summary, timeFrame };
 };
 

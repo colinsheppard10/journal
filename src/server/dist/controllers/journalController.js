@@ -57,7 +57,7 @@ const getJournalEntries = ({ user, timeFrame }) => __awaiter(void 0, void 0, voi
     return userJournals === null || userJournals === void 0 ? void 0 : userJournals.journals;
 });
 const handleJournalPost = ({ userId, entry, timestamp, date }) => __awaiter(void 0, void 0, void 0, function* () {
-    const responseText = yield (0, openAiController_1.submitOpenAiRequest)(entry);
+    const responseText = yield (0, openAiController_1.submitOpenAiRequest)({ userId, entry });
     yield saveJournalEntry({
         userId,
         entry,
@@ -85,7 +85,7 @@ const handleSummaryPost = ({ user, timeFrame }) => __awaiter(void 0, void 0, voi
         var _a;
         return acc + ((_a = journal.summary) !== null && _a !== void 0 ? _a : "");
     }, "");
-    const summary = yield (0, openAiController_1.submitOpenAiRequest)(journalSummaries);
+    const summary = yield (0, openAiController_1.submitOpenAiRequest)({ userId: user.id, entry: journalSummaries });
     return { summary, timeFrame };
 });
 exports.handleSummaryPost = handleSummaryPost;

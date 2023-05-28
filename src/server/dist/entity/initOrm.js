@@ -11,6 +11,7 @@ const username = process.env.TYPE_ORM_USER_NAME;
 const host = process.env.TYPE_ORM_HOST;
 const password = process.env.TYPE_ORM_PASSWORD;
 const database = process.env.TYPE_ORM_DATABASE;
+console.log(password);
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "postgres",
     host,
