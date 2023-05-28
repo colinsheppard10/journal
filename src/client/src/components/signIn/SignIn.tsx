@@ -116,7 +116,7 @@ export default function SignIn() {
             </Grid>
           </Grid>
         </Box>
-        <Divider flexItem sx={{ mt: 3 }}>
+        {/* <Divider flexItem sx={{ mt: 3 }}>
           Or
         </Divider>
         <Button
@@ -134,7 +134,7 @@ export default function SignIn() {
             }}
           />
           Sign In With Google
-        </Button>
+        </Button> */}
       </Box>
     </Container>
   );
