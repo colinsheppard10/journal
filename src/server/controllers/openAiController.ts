@@ -5,7 +5,6 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-
 const configuration2 = new Configuration({
   apiKey: process.env.OPEN_AI_API_KEY_2 ?? "x",
 });
