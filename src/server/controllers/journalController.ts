@@ -67,7 +67,8 @@ const getJournalEntries = async ({ user, timeFrame }: any) => {
 };
 
 export const handleJournalPost = async ({ userId, entry, timestamp, date }) => {
-  const responseText = await submitOpenAiRequest({userId, entry});
+  const prompt = process.env.OPEN_AI_PROMPT ?? "summarize this:"
+  const responseText = await submitOpenAiRequest({userId, entry, prompt});
   await saveJournalEntry({
     userId,
     entry,
@@ -95,7 +96,15 @@ export const handleSummaryPost = async ({ user, timeFrame }) => {
   const journalSummaries = journalEntries.reduce((acc, journal) => {
     return acc + (journal.summary ?? "");
   }, "");
-  const summary = await submitOpenAiRequest({userId: user.id, entry: journalSummaries});
+
+  const prompt = process.env.OPEN_AI_PROMPT_2 ?? "summarize this:"
+  let chunks = journalSummaries.match(/.{1,5004}/g);
+  let partialSummary = "";
+  for (let chunk of chunks) {
+    if(partialSummary.length > 5000) break;
+    partialSummary += await submitOpenAiRequest({userId: user.id, entry: chunk, prompt});
+  }
+  const summary = await submitOpenAiRequest({userId: user.id, entry: partialSummary, prompt});;
   return { summary, timeFrame };
 };
 

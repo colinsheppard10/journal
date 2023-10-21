@@ -10,3 +10,7 @@ echo "Starting Server"
 node dist/index.js
 
 echo "Started server"
+
+# Deploy locally:
+# - client: src/client -> npm start
+# - server: src/server -> tsc -> deploy .vscode debugger (.env file should point to heroku DB)

@@ -57,7 +57,9 @@ const getJournalEntries = ({ user, timeFrame }) => __awaiter(void 0, void 0, voi
     return userJournals === null || userJournals === void 0 ? void 0 : userJournals.journals;
 });
 const handleJournalPost = ({ userId, entry, timestamp, date }) => __awaiter(void 0, void 0, void 0, function* () {
-    const responseText = yield (0, openAiController_1.submitOpenAiRequest)({ userId, entry });
+    var _a;
+    const prompt = (_a = process.env.OPEN_AI_PROMPT) !== null && _a !== void 0 ? _a : "summarize this:";
+    const responseText = yield (0, openAiController_1.submitOpenAiRequest)({ userId, entry, prompt });
     yield saveJournalEntry({
         userId,
         entry,
@@ -74,6 +76,7 @@ const minimum = {
     year: 10,
 };
 const handleSummaryPost = ({ user, timeFrame }) => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
     const journalEntries = yield getJournalEntries({ user, timeFrame });
     const belowMinimum = !journalEntries || journalEntries.length < minimum[timeFrame];
     if (belowMinimum)
@@ -85,7 +88,16 @@ const handleSummaryPost = ({ user, timeFrame }) => __awaiter(void 0, void 0, voi
         var _a;
         return acc + ((_a = journal.summary) !== null && _a !== void 0 ? _a : "");
     }, "");
-    const summary = yield (0, openAiController_1.submitOpenAiRequest)({ userId: user.id, entry: journalSummaries });
+    const prompt = (_b = process.env.OPEN_AI_PROMPT_2) !== null && _b !== void 0 ? _b : "summarize this:";
+    let chunks = journalSummaries.match(/.{1,5004}/g);
+    let partialSummary = "";
+    for (let chunk of chunks) {
+        if (partialSummary.length > 5000)
+            break;
+        partialSummary += yield (0, openAiController_1.submitOpenAiRequest)({ userId: user.id, entry: chunk, prompt });
+    }
+    const summary = yield (0, openAiController_1.submitOpenAiRequest)({ userId: user.id, entry: partialSummary, prompt });
+    ;
     return { summary, timeFrame };
 });
 exports.handleSummaryPost = handleSummaryPost;
