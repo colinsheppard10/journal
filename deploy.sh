@@ -14,3 +14,7 @@ echo "Started server"
 # Deploy locally:
 # - client: src/client -> npm start
 # - server: src/server -> tsc -> deploy .vscode debugger (.env file should point to heroku DB)
+
+# Deploy to heroku:
+# - login to heroku: heroku login
+# - run: sh deploy.sh
