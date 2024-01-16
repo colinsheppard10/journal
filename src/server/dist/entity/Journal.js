@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Journal = void 0;
 const typeorm_1 = require("typeorm");
 const User_1 = require("./User");
-let Journal = class Journal extends typeorm_1.BaseEntity {
+let Journal = exports.Journal = class Journal extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
@@ -40,8 +40,7 @@ __decorate([
     (0, typeorm_1.Column)({ type: "text" }),
     __metadata("design:type", String)
 ], Journal.prototype, "entry", void 0);
-Journal = __decorate([
+exports.Journal = Journal = __decorate([
     (0, typeorm_1.Entity)()
 ], Journal);
-exports.Journal = Journal;
 //# sourceMappingURL=Journal.js.map

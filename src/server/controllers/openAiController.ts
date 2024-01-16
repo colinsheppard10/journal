@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
   apiKey: process.env.OPEN_AI_API_KEY ?? "x",
@@ -10,21 +10,30 @@ const configuration2 = new Configuration({
 });
 const openai2 = new OpenAIApi(configuration2);
 
-export const submitOpenAiRequest = async ({userId, entry, prompt}:{userId: string, entry: string, prompt: string}) => {
+export const submitOpenAiRequest = async ({
+  userId,
+  entry,
+  prompt,
+}: {
+  userId: string;
+  entry: string;
+  prompt: string;
+}) => {
   if (!entry || entry.length <= 0) return "";
-  const fullPrompt = `${prompt}"${entry}"`
-  const openAiClient = userId.split('-')[0] === '93b46c99' ? openai2 : openai
+  const openAiClient = userId.split("-")[0] === "93b46c99" ? openai2 : openai;
 
-  const response = await openAiClient.createCompletion({
-    model: "text-davinci-003",
-    prompt: fullPrompt,
-    max_tokens: 2048,
-    temperature: 0,
+  // Define the chat conversation
+  const chatConversation: ChatCompletionRequestMessage[] = [
+    { role: "system", content: prompt },
+    { role: "user", content: entry },
+  ];
+
+  // Create the chat completion
+  const response = await openAiClient.createChatCompletion({
+    messages: chatConversation,
+    model: "gpt-3.5-turbo",
   });
 
-  const responseText = response?.data?.choices[0]?.text?.replace(/\n/g, '') ?? ""
-  // const entryWords = entry.split(" ");
-  // const entryLastWord = entryWords[entryWords.length - 1];
-  // const responseText = `summary note ${entryLastWord} 1 - summary note ${entryLastWord} 2 - summary note ${entryLastWord} 3 - summary note ${entryLastWord} 4 - summary note ${entryLastWord} 5`;
+  const responseText = response.data.choices[0].message.content
   return responseText;
 };

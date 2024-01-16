@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerifyEmail = void 0;
 const typeorm_1 = require("typeorm");
 const User_1 = require("./User");
-let VerifyEmail = class VerifyEmail extends typeorm_1.BaseEntity {
+let VerifyEmail = exports.VerifyEmail = class VerifyEmail extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
@@ -54,8 +54,7 @@ __decorate([
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", User_1.User)
 ], VerifyEmail.prototype, "user", void 0);
-VerifyEmail = __decorate([
+exports.VerifyEmail = VerifyEmail = __decorate([
     (0, typeorm_1.Entity)()
 ], VerifyEmail);
-exports.VerifyEmail = VerifyEmail;
 //# sourceMappingURL=VerifyEmail.js.map

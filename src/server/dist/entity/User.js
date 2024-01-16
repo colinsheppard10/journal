@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 const Journal_1 = require("./Journal");
 const VerifyEmail_1 = require("./VerifyEmail");
 const ResetPassword_1 = require("./ResetPassword");
-let User = class User extends typeorm_1.BaseEntity {
+let User = exports.User = class User extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
@@ -70,8 +70,7 @@ __decorate([
     }),
     __metadata("design:type", Array)
 ], User.prototype, "resetPasswords", void 0);
-User = __decorate([
+exports.User = User = __decorate([
     (0, typeorm_1.Entity)()
 ], User);
-exports.User = User;
 //# sourceMappingURL=User.js.map

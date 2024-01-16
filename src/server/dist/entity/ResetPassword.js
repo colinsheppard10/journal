@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResetPassword = void 0;
 const typeorm_1 = require("typeorm");
 const User_1 = require("./User");
-let ResetPassword = class ResetPassword extends typeorm_1.BaseEntity {
+let ResetPassword = exports.ResetPassword = class ResetPassword extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
@@ -42,8 +42,7 @@ __decorate([
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", User_1.User)
 ], ResetPassword.prototype, "user", void 0);
-ResetPassword = __decorate([
+exports.ResetPassword = ResetPassword = __decorate([
     (0, typeorm_1.Entity)()
 ], ResetPassword);
-exports.ResetPassword = ResetPassword;
 //# sourceMappingURL=ResetPassword.js.map
