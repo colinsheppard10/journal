@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.post("/signin", async (req, res) => {
+router.post("/test", async (req, res) => {
   try {
     return res.json({
         success: true,

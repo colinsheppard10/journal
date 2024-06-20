@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const router = (0, express_1.Router)();
-router.post("/signin", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/test", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         return res.json({
             success: true,
