@@ -2,6 +2,7 @@
 # this file get triggered automatically on heroku from Procfile
 echo "Starting the server"
 cd src/server
+npm install
 node dist/index.js
 echo "Started server"
 

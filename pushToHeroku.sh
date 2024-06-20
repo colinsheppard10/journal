@@ -8,5 +8,5 @@ cd ../server && npm run build
 cd ../../ && git add *
 echo \"`date`\" | xargs git commit -m
 
+# auto deploys are connected to https://github.com/colinsheppard10/journal
 git push origin 
-# git push heroku main
