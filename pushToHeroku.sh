@@ -1,12 +1,9 @@
 #!
-# TODO: for now just using the dev server
-# cd src/client
-# npm run build
-
 cd src/client
+npm install
 npm run build
 
-cd ../server && tsc
+cd ../server && npm run build
 
 cd ../../ && git add *
 echo \"`date`\" | xargs git commit -m

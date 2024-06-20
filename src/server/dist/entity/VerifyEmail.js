@@ -12,8 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerifyEmail = void 0;
 const typeorm_1 = require("typeorm");
 const User_1 = require("./User");
-let VerifyEmail = exports.VerifyEmail = class VerifyEmail extends typeorm_1.BaseEntity {
+let VerifyEmail = class VerifyEmail extends typeorm_1.BaseEntity {
 };
+exports.VerifyEmail = VerifyEmail;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)

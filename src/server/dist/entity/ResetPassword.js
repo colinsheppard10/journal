@@ -12,8 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResetPassword = void 0;
 const typeorm_1 = require("typeorm");
 const User_1 = require("./User");
-let ResetPassword = exports.ResetPassword = class ResetPassword extends typeorm_1.BaseEntity {
+let ResetPassword = class ResetPassword extends typeorm_1.BaseEntity {
 };
+exports.ResetPassword = ResetPassword;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)

@@ -14,8 +14,9 @@ const typeorm_1 = require("typeorm");
 const Journal_1 = require("./Journal");
 const VerifyEmail_1 = require("./VerifyEmail");
 const ResetPassword_1 = require("./ResetPassword");
-let User = exports.User = class User extends typeorm_1.BaseEntity {
+let User = class User extends typeorm_1.BaseEntity {
 };
+exports.User = User;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)

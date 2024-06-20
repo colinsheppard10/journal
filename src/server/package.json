@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts",
+    "build": "npx tsc"
+  },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "@types/dotenv": "^8.2.0",
@@ -7,11 +12,13 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "google-auth-library": "^8.8.0",
+    "npx": "^10.2.2",
     "openai": "^3.2.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "tsc": "^2.0.4",
     "typeorm": "^0.3.15",
+    "typescript": "^5.5.2",
     "uuid": "^9.0.0",
     "ws": "^8.13.0"
   }

@@ -18,10 +18,10 @@ console.log(process.env.SENDGRID_API_KEY);
 sgMail.setApiKey((_a = process.env.SENDGRID_API_KEY) !== null && _a !== void 0 ? _a : "x");
 const fromEmailAddress = process.env.SENDGRID_FROM_EMAIL;
 const baseURL = process.env.BASE_URL;
-const sendEmail = ({ email, verifyUuid }) => __awaiter(void 0, void 0, void 0, function* () {
+const sendEmail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, verifyUuid }) {
     const msg = {
         to: email,
-        from: fromEmailAddress,
+        from: fromEmailAddress, // Change to your verified sender
         templateId: "d-84bf5ac028ed436ab04a54a57fd7565d",
         dynamic_template_data: {
             url: `${baseURL}/verify?id=${verifyUuid}`,
@@ -38,10 +38,10 @@ const sendEmail = ({ email, verifyUuid }) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.sendEmail = sendEmail;
-const sendPasswordResetEmail = ({ email, resetUuid }) => __awaiter(void 0, void 0, void 0, function* () {
+const sendPasswordResetEmail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, resetUuid }) {
     const msg = {
         to: email,
-        from: fromEmailAddress,
+        from: fromEmailAddress, // Change to your verified sender
         templateId: "d-cd4246412e044d8fa43e0d5877cd27c4",
         dynamic_template_data: {
             url: `${baseURL}/reset?id=${resetUuid}`,

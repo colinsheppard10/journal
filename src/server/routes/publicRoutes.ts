@@ -14,6 +14,7 @@ import {
 } from "../controllers/userController";
 import { ResetPassword } from "../entity/ResetPassword";
 import { v4 as uuidGen } from "uuid";
+import computationRoutes from "./computation/computationRoutes";
 
 const router = Router();
 
@@ -173,5 +174,8 @@ router.post("/reset", async (req, res) => {
     return res.status(504).send({ error });
   }
 });
+
+// All routes here are for the computation app
+router.use('/computation', computationRoutes);
 
 export default router;

@@ -14,6 +14,7 @@ const emailController_1 = require("../controllers/emailController");
 const userController_1 = require("../controllers/userController");
 const ResetPassword_1 = require("../entity/ResetPassword");
 const uuid_1 = require("uuid");
+const computationRoutes_1 = require("./computation/computationRoutes");
 const router = (0, express_1.Router)();
 router.post("/signin", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -173,5 +174,7 @@ router.post("/reset", (req, res) => __awaiter(void 0, void 0, void 0, function* 
         return res.status(504).send({ error });
     }
 }));
+// All routes here are for the computation app
+router.use('/computation', computationRoutes_1.default);
 exports.default = router;
 //# sourceMappingURL=publicRoutes.js.map

@@ -20,7 +20,7 @@ const configuration2 = new openai_1.Configuration({
     apiKey: (_b = process.env.OPEN_AI_API_KEY_2) !== null && _b !== void 0 ? _b : "x",
 });
 const openai2 = new openai_1.OpenAIApi(configuration2);
-const submitOpenAiRequest = ({ userId, entry, prompt, }) => __awaiter(void 0, void 0, void 0, function* () {
+const submitOpenAiRequest = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId, entry, prompt, }) {
     if (!entry || entry.length <= 0)
         return "";
     const openAiClient = userId.split("-")[0] === "93b46c99" ? openai2 : openai;

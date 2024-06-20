@@ -9,39 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Journal = void 0;
+exports.Computation = void 0;
 const typeorm_1 = require("typeorm");
-const User_1 = require("./User");
-let Journal = class Journal extends typeorm_1.BaseEntity {
+let Computation = class Computation extends typeorm_1.BaseEntity {
 };
-exports.Journal = Journal;
+exports.Computation = Computation;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
-], Journal.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.journals, {
-        onDelete: "CASCADE",
-    }),
-    __metadata("design:type", User_1.User)
-], Journal.prototype, "user", void 0);
+], Computation.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Journal.prototype, "timestamp", void 0);
+], Computation.prototype, "timestamp", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Journal.prototype, "localDateFromBrowser", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "text" }),
-    __metadata("design:type", String)
-], Journal.prototype, "summary", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "text" }),
-    __metadata("design:type", String)
-], Journal.prototype, "entry", void 0);
-exports.Journal = Journal = __decorate([
+    __metadata("design:type", Number)
+], Computation.prototype, "count", void 0);
+exports.Computation = Computation = __decorate([
     (0, typeorm_1.Entity)()
-], Journal);
-//# sourceMappingURL=Journal.js.map
+], Computation);
+//# sourceMappingURL=Computation.js.map

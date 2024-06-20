@@ -13,7 +13,7 @@ exports.handleJournalGet = exports.handleSummaryPost = exports.handleJournalPost
 const Journal_1 = require("../entity/Journal");
 const User_1 = require("../entity/User");
 const openAiController_1 = require("./openAiController");
-const saveJournalEntry = ({ userId, entry, timestamp, date, summary, }) => __awaiter(void 0, void 0, void 0, function* () {
+const saveJournalEntry = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId, entry, timestamp, date, summary, }) {
     // TODO: this should be one query, need to change this
     /*
       SELECT * from "user" u
@@ -46,7 +46,7 @@ const timeFrameToLength = {
     month: 30,
     year: 365,
 };
-const getJournalEntries = ({ user, timeFrame }) => __awaiter(void 0, void 0, void 0, function* () {
+const getJournalEntries = (_a) => __awaiter(void 0, [_a], void 0, function* ({ user, timeFrame }) {
     var date = new Date();
     var oneWeekAgo = date.setDate(date.getDate() - timeFrameToLength[timeFrame]);
     let userJournals = yield User_1.User.createQueryBuilder("u")
@@ -56,9 +56,9 @@ const getJournalEntries = ({ user, timeFrame }) => __awaiter(void 0, void 0, voi
         .getOne();
     return userJournals === null || userJournals === void 0 ? void 0 : userJournals.journals;
 });
-const handleJournalPost = ({ userId, entry, timestamp, date }) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const prompt = (_a = process.env.OPEN_AI_PROMPT) !== null && _a !== void 0 ? _a : "summarize this:";
+const handleJournalPost = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId, entry, timestamp, date }) {
+    var _b;
+    const prompt = (_b = process.env.OPEN_AI_PROMPT) !== null && _b !== void 0 ? _b : "summarize this:";
     const responseText = yield (0, openAiController_1.submitOpenAiRequest)({ userId, entry, prompt });
     yield saveJournalEntry({
         userId,
@@ -75,7 +75,7 @@ const minimum = {
     month: 3,
     year: 10,
 };
-const handleSummaryPost = ({ user, timeFrame }) => __awaiter(void 0, void 0, void 0, function* () {
+const handleSummaryPost = (_a) => __awaiter(void 0, [_a], void 0, function* ({ user, timeFrame }) {
     var _b;
     const journalEntries = yield getJournalEntries({ user, timeFrame });
     const belowMinimum = !journalEntries || journalEntries.length < minimum[timeFrame];
@@ -101,7 +101,7 @@ const handleSummaryPost = ({ user, timeFrame }) => __awaiter(void 0, void 0, voi
     return { summary, timeFrame };
 });
 exports.handleSummaryPost = handleSummaryPost;
-const handleJournalGet = ({ userId }) => __awaiter(void 0, void 0, void 0, function* () {
+const handleJournalGet = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId }) {
     let user = yield User_1.User.createQueryBuilder("u")
         .leftJoinAndSelect("u.journals", "j")
         .where("u.id = :id", { id: userId })

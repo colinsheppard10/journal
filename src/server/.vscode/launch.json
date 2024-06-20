@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "envFile": "${workspaceFolder}/.env",
+      "runtimeExecutable": "/Users/colinsheppard/.nvm/versions/node/v21.7.3/bin/node",
+      "name": "Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/index.js",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "preLaunchTask": "npm: build"
+    }
+  ]
+}

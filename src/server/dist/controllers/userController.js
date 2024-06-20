@@ -14,7 +14,7 @@ const User_1 = require("../entity/User");
 const uuid_1 = require("uuid");
 const VerifyEmail_1 = require("../entity/VerifyEmail");
 const ResetPassword_1 = require("../entity/ResetPassword");
-const getUser = ({ column, value }) => __awaiter(void 0, void 0, void 0, function* () {
+const getUser = (_a) => __awaiter(void 0, [_a], void 0, function* ({ column, value }) {
     try {
         let user = yield User_1.User.createQueryBuilder("user")
             .where(`user.${column} = :value`, { value })
@@ -26,7 +26,7 @@ const getUser = ({ column, value }) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.getUser = getUser;
-const getUserAndReset = ({ column, value }) => __awaiter(void 0, void 0, void 0, function* () {
+const getUserAndReset = (_a) => __awaiter(void 0, [_a], void 0, function* ({ column, value }) {
     try {
         let user = yield User_1.User.createQueryBuilder("user")
             .leftJoinAndSelect("user.resetPasswords", "r")
@@ -39,7 +39,7 @@ const getUserAndReset = ({ column, value }) => __awaiter(void 0, void 0, void 0,
     }
 });
 exports.getUserAndReset = getUserAndReset;
-const getVerifyEmail = ({ column, value }) => __awaiter(void 0, void 0, void 0, function* () {
+const getVerifyEmail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ column, value }) {
     try {
         let verifyEmail = yield VerifyEmail_1.VerifyEmail.createQueryBuilder("verifyEmail")
             .leftJoinAndSelect("verifyEmail.user", "u")
@@ -52,7 +52,7 @@ const getVerifyEmail = ({ column, value }) => __awaiter(void 0, void 0, void 0, 
     }
 });
 exports.getVerifyEmail = getVerifyEmail;
-const getResetPassword = ({ column, value }) => __awaiter(void 0, void 0, void 0, function* () {
+const getResetPassword = (_a) => __awaiter(void 0, [_a], void 0, function* ({ column, value }) {
     try {
         let resetPassword = yield ResetPassword_1.ResetPassword.createQueryBuilder("resetPassword")
             .leftJoinAndSelect("resetPassword.user", "u")
@@ -65,7 +65,7 @@ const getResetPassword = ({ column, value }) => __awaiter(void 0, void 0, void 0
     }
 });
 exports.getResetPassword = getResetPassword;
-const getUserEmailPassword = ({ email, password }) => __awaiter(void 0, void 0, void 0, function* () {
+const getUserEmailPassword = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, password }) {
     try {
         let user = yield User_1.User.createQueryBuilder("user")
             .where(`user.email = :email`, { email })
@@ -78,7 +78,7 @@ const getUserEmailPassword = ({ email, password }) => __awaiter(void 0, void 0, 
     }
 });
 exports.getUserEmailPassword = getUserEmailPassword;
-const createUserFromGoogle = ({ tokenPayload, }) => __awaiter(void 0, void 0, void 0, function* () {
+const createUserFromGoogle = (_a) => __awaiter(void 0, [_a], void 0, function* ({ tokenPayload, }) {
     try {
         let user = new User_1.User();
         user.firstName = tokenPayload.given_name;
@@ -95,7 +95,7 @@ const createUserFromGoogle = ({ tokenPayload, }) => __awaiter(void 0, void 0, vo
     }
 });
 exports.createUserFromGoogle = createUserFromGoogle;
-const createUserFromEmail = ({ verifyEmail, }) => __awaiter(void 0, void 0, void 0, function* () {
+const createUserFromEmail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ verifyEmail, }) {
     try {
         let user = new User_1.User();
         user.firstName = verifyEmail.firstName;
@@ -113,7 +113,7 @@ const createUserFromEmail = ({ verifyEmail, }) => __awaiter(void 0, void 0, void
     }
 });
 exports.createUserFromEmail = createUserFromEmail;
-const createVerifyEmail = ({ signUpPayload, }) => __awaiter(void 0, void 0, void 0, function* () {
+const createVerifyEmail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ signUpPayload, }) {
     try {
         let verifyEmail = new VerifyEmail_1.VerifyEmail();
         verifyEmail.firstName = signUpPayload.firstName;
