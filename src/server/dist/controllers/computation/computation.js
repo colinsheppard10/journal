@@ -9,17 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const computation_1 = require("../../controllers/computation/computation");
-const router = (0, express_1.Router)();
-router.post("/data", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getComputationData = void 0;
+const Computation_1 = require("../../entity/computation/Computation");
+const getComputationData = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, computation_1.getComputationData)();
-        return res.json(data);
+        return yield Computation_1.Computation.createQueryBuilder("computation").getMany();
     }
     catch (error) {
-        return res.status(504).send({ error });
+        console.log(error);
     }
-}));
-exports.default = router;
-//# sourceMappingURL=computationRoutes.js.map
+});
+exports.getComputationData = getComputationData;
+//# sourceMappingURL=computation.js.map

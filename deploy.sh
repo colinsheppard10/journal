@@ -8,8 +8,12 @@ echo "Started server"
 
 # Deploy locally:
 # - client: src/client -> npm start
-# - server: src/server -> tsc -> deploy .vscode debugger (.env file should point to heroku DB)
+# - server: src/server/.vscode should work (add .env file pointing to heroku DB)
+# - - (src/server -> npx tsc -> "${workspaceFolder}/dist/index.js" )
 
 # Manually Deploy on heroku:
 # - login to heroku: heroku login
 # - run: sh deploy.sh
+
+# Useful commands: 
+# - tail heroku logs: heroku logs --tail --app bluebird-journal
