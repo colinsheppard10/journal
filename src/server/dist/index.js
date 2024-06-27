@@ -17,8 +17,10 @@ const initOrm_1 = require("./entity/initOrm");
 const webSocketController_1 = require("./controllers/webSocketController");
 const dotenv = require("dotenv");
 const path = require("path");
+const cors = require("cors");
 dotenv.config();
 const app = express();
+app.use(cors());
 // Initialize typeOrm
 initOrm_1.AppDataSource.initialize()
     .then(() => {

@@ -9,9 +9,11 @@ import {
 } from "./controllers/webSocketController";
 import * as dotenv from "dotenv";
 import path = require("path");
+import cors = require("cors");
 
 dotenv.config();
 const app = express();
+app.use(cors())
 
 // Initialize typeOrm
 AppDataSource.initialize()
