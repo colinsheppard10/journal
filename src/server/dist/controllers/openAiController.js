@@ -20,10 +20,11 @@ const configuration2 = new openai_1.Configuration({
     apiKey: (_b = process.env.OPEN_AI_API_KEY_2) !== null && _b !== void 0 ? _b : "x",
 });
 const openai2 = new openai_1.OpenAIApi(configuration2);
-const submitOpenAiRequest = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId, entry, prompt, }) {
+const submitOpenAiRequest = (_a) => __awaiter(void 0, [_a], void 0, function* ({ userId = 'x', entry, prompt, }) {
     if (!entry || entry.length <= 0)
         return "";
-    const openAiClient = userId.split("-")[0] === "93b46c99" ? openai2 : openai;
+    // const openAiClient = userId.split("-")[0] === "93b46c99" ? openai2 : openai;
+    const openAiClient = openai2;
     // Define the chat conversation
     const chatConversation = [
         { role: "system", content: prompt },
@@ -32,7 +33,7 @@ const submitOpenAiRequest = (_a) => __awaiter(void 0, [_a], void 0, function* ({
     // Create the chat completion
     const response = yield openAiClient.createChatCompletion({
         messages: chatConversation,
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
     });
     const responseText = response.data.choices[0].message.content;
     return responseText;

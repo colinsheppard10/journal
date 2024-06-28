@@ -11,16 +11,17 @@ const configuration2 = new Configuration({
 const openai2 = new OpenAIApi(configuration2);
 
 export const submitOpenAiRequest = async ({
-  userId,
+  userId = 'x',
   entry,
   prompt,
 }: {
-  userId: string;
+  userId?: string;
   entry: string;
   prompt: string;
 }) => {
   if (!entry || entry.length <= 0) return "";
-  const openAiClient = userId.split("-")[0] === "93b46c99" ? openai2 : openai;
+  // const openAiClient = userId.split("-")[0] === "93b46c99" ? openai2 : openai;
+  const openAiClient = openai2
 
   // Define the chat conversation
   const chatConversation: ChatCompletionRequestMessage[] = [
@@ -31,7 +32,7 @@ export const submitOpenAiRequest = async ({
   // Create the chat completion
   const response = await openAiClient.createChatCompletion({
     messages: chatConversation,
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o",
   });
 
   const responseText = response.data.choices[0].message.content
