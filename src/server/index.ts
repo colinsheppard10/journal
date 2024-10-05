@@ -19,7 +19,7 @@ app.use(cors())
 AppDataSource.initialize()
   .then(() => {
     // set the port of our application.
-    // process.env.PORT lets the port be set by Heroku
+    // process.env.PORT lets the port be set by Heroku.
     let port: any = 3001;
 
     // Configure App
