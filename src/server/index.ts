@@ -26,7 +26,7 @@ AppDataSource.initialize()
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    // main router uses authMiddleware
+    // main router uses authMiddleware.
     // publicRoutes does not use authMiddleware
     app.use('/public',publicRoutes);
     app.use('/api', authRoutes);

@@ -30,7 +30,7 @@ initOrm_1.AppDataSource.initialize()
     // Configure App
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    // main router uses authMiddleware
+    // main router uses authMiddleware.
     // publicRoutes does not use authMiddleware
     app.use('/public', publicRoutes_1.default);
     app.use('/api', authRoutes_1.default);
