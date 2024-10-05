@@ -5,6 +5,7 @@ import { User } from "./User";
 import { VerifyEmail } from "./VerifyEmail";
 import { ResetPassword } from "./ResetPassword";
 import { Computation } from "./computation/Computation";
+import { Flashcard } from "./computation/Flashcard";
 
 const username = process.env.TYPE_ORM_USER_NAME;
 const host = process.env.TYPE_ORM_HOST;
@@ -20,7 +21,7 @@ export const AppDataSource = new DataSource({
   database,
   synchronize: true,
   logging: true,
-  entities: [Journal, User, VerifyEmail, ResetPassword, Computation],
+  entities: [Journal, User, VerifyEmail, ResetPassword, Computation, Flashcard],
   subscribers: [],
   migrations: [],
   ssl: {

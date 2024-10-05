@@ -8,6 +8,7 @@ const User_1 = require("./User");
 const VerifyEmail_1 = require("./VerifyEmail");
 const ResetPassword_1 = require("./ResetPassword");
 const Computation_1 = require("./computation/Computation");
+const Flashcard_1 = require("./computation/Flashcard");
 const username = process.env.TYPE_ORM_USER_NAME;
 const host = process.env.TYPE_ORM_HOST;
 const password = process.env.TYPE_ORM_PASSWORD;
@@ -21,7 +22,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     database,
     synchronize: true,
     logging: true,
-    entities: [Journal_1.Journal, User_1.User, VerifyEmail_1.VerifyEmail, ResetPassword_1.ResetPassword, Computation_1.Computation],
+    entities: [Journal_1.Journal, User_1.User, VerifyEmail_1.VerifyEmail, ResetPassword_1.ResetPassword, Computation_1.Computation, Flashcard_1.Flashcard],
     subscribers: [],
     migrations: [],
     ssl: {
