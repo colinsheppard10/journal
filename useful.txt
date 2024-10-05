@@ -1,0 +1,3 @@
+// insert new user
+INSERT INTO "public"."user" ("id", "email", "password", "locale", "fullName", "picture", "firstName", "lastName", "journalAuthTokenEmail") VALUES
+('b19c36ac-8c55-494d-bbe6-de4414bdfa55', 'colinsheppard10@gmail.com', 'xxx', NULL, 'colin sheppard', NULL, 'colin', 'sheppard', '499a99c4-bdbe-4549-b0e8-85623d58f28d');
